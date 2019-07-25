@@ -46,6 +46,6 @@ if args.add:
         keyring.set_password(args.service, args.account, secret)
 else:
     # Generate TOTP, copy to clipboard (unless --print-only) and print
-    token = otp.get_totp(secret)
+    token = otp.get_totp(secret, as_string=True)
     args.print_only or pyperclip.copy(token)
-    print("%06d" % token)
+    print(token)
